@@ -10,9 +10,5 @@ library(tidyverse)
 library(descriptr)
 
 
-Data1 <- read.csv("_SharedFolder_article-turnout-lifestyles/data/CleanData-Lifestyle.csv")
-  select(215:225, 242:312, 344:378)
-Data2 <- read.csv("_SharedFolder_article-turnout-lifestyles/data/CleanData-Lifestyle2.csv")
-
-
-test <- ds_screener(Data1)
+Data1 <- readRDS("_SharedFolder_article-turnout-lifestyles/data/CleanData-Lifestyle.rds") %>%
+  select(1:2, 14:24 : 76:202, 215:348, 347:391) 
