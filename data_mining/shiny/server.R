@@ -62,9 +62,9 @@ server <- function(session, input, output){
     for (i in 1:length(comb)){
       varx <- comb[[i]][1]
       vary <- comb[[i]][2]
-      plot <- ggplot(Data(), aes_string(x = varx, fill = vary,
-                                        group = vary)) +
-        geom_bar(stat="count",
+      plot <- ggplot(Data(), aes(x = factor(.data[[varx]]))) +
+        geom_bar(stat="count", aes(fill = factor(.data[[vary]]),
+                                          group = factor(.data[[vary]])),
                  position = position_dodge())
       ggsave(paste0(input$path, "/", varx, "-", vary, ".png"),
              plot = plot)
