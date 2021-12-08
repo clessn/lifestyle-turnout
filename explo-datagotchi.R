@@ -1,5 +1,4 @@
-
-#Livbrary
+#Library
 library(tidyverse)
 library(stats)
 
@@ -15,6 +14,12 @@ explo$voteIntent[explo$op_voteIntent_Green == 1] <- 5
 
 #explo$voteIntent <- factor(explo$voteIntent)
 
-model <- glm(voteIntent ~ ses_dwelling_app + cons_Vegan, 
-            data = explo,  family = gaussian(link = "identity"))
+model <- lm(as.factor(voteIntent) ~ ses_dwelling_app + cons_Vegan, 
+            data = explo) 
 
+
+model_lib <- glm(op_voteIntent_Lib ~ ses_dwelling_app + cons_Vegan, 
+             data = explo,  family = binomial(link = "logit"))
+
+model_cons <- glm(op_voteIntent_Lib ~ ses_dwelling_app + cons_Vegan, 
+                 data = explo,  family = binomial(link = "logit"))
