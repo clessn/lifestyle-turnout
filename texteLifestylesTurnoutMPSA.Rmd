@@ -1,0 +1,43 @@
+---
+title: "Same Paths, Different Voting Behaviors: What Can Lifestyle Variables Tell Us About Non-Voters?"
+subtitle: "DRAFT VERSION - PLEASE DO NOT CITE"
+author:
+- Justine Béchard^[Université Laval, Pavillon Charles-De-Koninck, 1030 Avenue des Sciences Humaines, Room 2453-A, Québec, QC G1V 0A6.]
+- Hubert Cadieux*
+- Alexandre Côté*
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+header-includes:
+   - \usepackage{setspace}
+   - \doublespacing
+   - \usepackage{rotating}
+   - \usepackage{array}
+   - \usepackage{float}
+   - \floatplacement{figure}{H}
+bibliography: mybibfile.bib
+abstract: "The decline in voter turnout has been widely explored in the literature. Nevertheless, young adults are often portrayed as a monolithic group of voters whose likelihood of voting, interest in politics and elections is lower than that of previous generations. Using data from two large-scale surveys (n = 2,011 and n = 1,600) and a ludic web application (n = 30,000), this study proposes to explore the lifestyles of non-voters of different age groups. Results of preliminary quantitative analyses suggest that similar lifestyle habits across age groups are related to different levels of participation. For example, living in an apartment at a young age is associated with higher turnout, while the opposite is true for older voters. More broadly, this research opens innovative avenues for research on participation and voting behavior. \\par \\textbf{Keywords:} turnout, lifestyle, electoral behavior, Canadian politics"
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+# Review of the literature
+
+# Data and Methods
+
+## Data
+
+## Methods
+
+# Results
+
+# Discussion
+
+# Conclusion
+
+\clearpage
+# References

@@ -12,6 +12,8 @@ explo$voteIntent[explo$op_voteIntent_Ndp == 1] <- 3
 explo$voteIntent[explo$op_voteIntent_Bloc == 1] <- 4
 explo$voteIntent[explo$op_voteIntent_Green == 1] <- 5
 
+write.csv("")
+
 #explo$voteIntent <- factor(explo$voteIntent)
 
 model <- lm(as.factor(voteIntent) ~ ses_dwelling_app + cons_Vegan, 
