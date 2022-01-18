@@ -1,8 +1,4 @@
 library(tidyverse)
 
-Data <- readRDS("_SharedFolder_article-turnout-lifestyles/data/PilotsFusion.rds")
-
-model <- glm(op_turnout2019 ~ ses_dwelling_app + cons_Vegan, 
-                 data = Data,  family = binomial(link = "logit"))
-
+Data <- read.csv("_SharedFolder_article-turnout-lifestyles/data/VPL-data-19_01_2019/lifestyle_coding/data/lifestyle_clean_data_23-04-20.csv")
 

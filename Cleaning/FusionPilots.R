@@ -23,9 +23,10 @@ nos_vars <- c("act_Books",
               "val_excitementAll",
               "val_kidsConformity",
               "val_securityAll",
-              "val_selfRespectAll")
+              "val_selfRespectAll",
+              "op_intent")
 
-Pilot1 <- readRDS("_SharedFolder_article-turnout-lifestyles/data/CleanData-Lifestyle.rds") %>%
+Pilot1 <- readRDS("_SharedFolder_article-turnout-lifestyles/data/CleanData-Lifestyle.rds") #%>%
   mutate(cons_coffee_type_NoCoffee = cons_coffee_place_noCoffee) %>%
   select(c(nos_vars,
            starts_with("cons_brand"),
@@ -37,7 +38,7 @@ Pilot1 <- readRDS("_SharedFolder_article-turnout-lifestyles/data/CleanData-Lifes
            starts_with("ses_income"),
            ends_with("Drink")))
 
-Pilot2 <- read.csv("_SharedFolder_article-turnout-lifestyles/data/CleanData-Lifestyle2.csv") #%>%
+Pilot2 <- read.csv("_SharedFolder_article-turnout-lifestyles/data/CleanData-Lifestyle2.csv") %>%
   mutate(act_DoingTeamSport = act_TeamSport,
          act_DoingYoga = act_Yoga,
          cons_microDrink = cons_microBeers,
