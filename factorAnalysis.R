@@ -1,3 +1,26 @@
+####################################################################################
+########################## Clustering lifestyle-turnout ############################
+####################################################################################
+
+#********************************#
+#### 0. PACKAGES  ####
+#********************************#
+
+library(tidyverse)
+library(psych)
+library(utils)
+library(ggplot2)
+
+#********************************#
+#### 0.1 DATA ####
+#********************************#  
+
+Data  <- readRDS("_SharedFolder_article-turnout-lifestyles/data/VPL-data-19_01_2019/lifestyle_coding/data/DataBaV_31-05-2020.rds")
+
+#********************************#
+#### 0.2 FONCTIONS ####
+#********************************#  
+
 # 0.1 - custom functions ####
 
 # Faire une FA sur une df. Save le graph de FA dans le path_save 
@@ -71,3 +94,47 @@ finverser <- function(df, col){
   vec_col <- vec_col - max
   return(vec_col)
 }
+
+#********************************#
+#### 1 ANALYSES FACTORIELLES ####
+#********************************#  
+
+#### Santé et bien-être ####
+
+Sante_FA <- Data  %>%
+  dplyr::select(c(exercice_hike,
+                  exercice_walk,
+                  exercice_jog,
+                  exercice_workout,
+                  transport_walk_scale,
+                  transport_bike_scale
+                  )) %>%
+  na.omit()
+
+
+topdown_fa(Sante_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis/sante-bien-etreFA.png")
+
+#health_phy,
+#health_mental,
+#happiness,
+#life_satisfaction,
+#exercice_workout
+
+#### Environnement ####
+
+Enviro_FA <- Data  %>%
+  dplyr::select(c(health_phy,
+                  health_mental,
+                  happiness,
+                  life_satisfaction)) %>%
+  na.omit()
+
+topdown_fa(Enviro_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis")
+
+#### Consommation locale ####
+
+#### Substance use #### 
+
+#### Vie sociale #### 
+
+
