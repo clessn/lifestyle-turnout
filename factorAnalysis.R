@@ -127,10 +127,98 @@ Sante_FA <- Data  %>%
                   exercice_hike)) %>%
   na.omit()
 
+
+
 topdown_fa(Sante_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis/sante-bien-etreFA2.png")
 
 
 #### Environnementaliste ####
+
+Data$favorite_transport <- NA
+Data$favorite_transport[Data$transport_walk == 1 | Data$transport_bike == 1] <- 1
+Data$favorite_transport[Data$transport_public == 1] <- 0.5
+Data$favorite_transport[Data$transport_car == 1 | Data$transport_moto == 1 | Data$transport_taxi == 1] <- 0
+
+Data$regime <- NA
+Data$regime[Data$food_vegan == 1] <- 1 
+Data$regime[Data$food_vegetarian == 1] <- 0.67
+Data$regime[Data$food_semivegetarian == 1] <- 0.33
+Data$regime[Data$food_normal == 1] <- 0
+
+
+Data$transport_walk_scale_norm <- Data$transport_walk_scale/4 
+Data$transport_bike_scale_norm <- Data$transport_bike_scale/4 
+Data$transport_public_scale_norm <- Data$transport_public_scale/4
+Data$transport_moto_scale_norm <- Data$transport_moto_scale/4
+Data$transport_car_scale_norm <- Data$transport_car_scale/4 
+Data$transport_taxi_scale_norm <- Data$transport_taxi_scale/4 
+
+
+
+
+  
+
+
+Enviro_FA <- Data  %>%
+  dplyr::select(c(favorite_transport, 
+                  regime, 
+                  transport_walk_scale_norm, 
+                  transport_bike_scale_norm, 
+                  transport_public_scale_norm,
+                  transport_moto_scale_norm, 
+                  transport_car_scale_norm, 
+                  transport_taxi_scale_norm)) %>%
+  na.omit()
+
+topdown_fa(Enviro_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis/enviroFA.png")
+
+Data$transport_moto_scale_norm_rev <- finverser(Data, "transport_moto_scale_norm")
+Data$transport_walk_scale_norm_rev <- finverser(Data, "transport_walk_scale_norm")
+Data$food_normal_rev <- finverser(Data, "food_normal")
+Data$transport_car_scale_norm_rev <- finverser(Data, "transport_car_scale_norm")
+Data$transport_car_rev <- finverser(Data, "transport_car")
+
+
+
+
+Data$mix_veg <-  Data$food_vegan + Data$food_vegetarian 
+
+
+Enviro_FA <- Data  %>%
+  dplyr::select(c(favorite_transport, 
+                  regime, 
+                  transport_walk_scale_norm_rev, 
+                  transport_bike_scale_norm, 
+                  transport_public_scale_norm,
+                  transport_moto_scale_norm_rev, 
+                  transport_car_scale_norm, 
+                  transport_taxi_scale_norm)) %>%
+  na.omit()
+
+topdown_fa(Enviro_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis/enviroFA2.png")
+
+Enviro_FA <- Data  %>%
+  dplyr::select(c(favorite_transport, 
+                  regime, 
+                  transport_bike_scale_norm, 
+                  transport_public_scale_norm,
+                  transport_taxi_scale_norm)) %>%
+  na.omit()
+
+topdown_fa(Enviro_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis/enviroFA3.png")
+
+
+Enviro_FA <- Data  %>%
+  dplyr::select(c(favorite_transport, 
+                  transport_public_scale_norm,
+                  transport_car_rev)) %>%
+  na.omit()
+
+topdown_fa(Enviro_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis/enviroFA4.png")
+
+### Au lieu de faire une dimension enviro, on va faire une dimension transport
+
+
 
 #### Local-International ####
 
