@@ -99,42 +99,47 @@ finverser <- function(df, col){
 #### 1 ANALYSES FACTORIELLES ####
 #********************************#  
 
+#### Pre cleaning ####
+
+# life_satisfaction
+Data$life_satisfaction_norm <- Data$life_satisfaction/10
+Data$exercice_jog_rev <- finverser(Data, "exercice_jog")
+
 #### Santé et bien-être ####
 
 Sante_FA <- Data  %>%
-  dplyr::select(c(exercice_hike,
-                  exercice_walk,
-                  exercice_jog,
-                  exercice_workout,
-                  transport_walk_scale,
-                  transport_bike_scale
-                  )) %>%
+  dplyr::select(c(health_phy,
+                  health_mental,
+                  happiness,
+                  life_satisfaction_norm)) %>%
   na.omit()
 
 
 topdown_fa(Sante_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis/sante-bien-etreFA.png")
 
-#health_phy,
-#health_mental,
-#happiness,
-#life_satisfaction,
-#exercice_workout
+# Essayer avec des vars d'exercice
 
-#### Environnement ####
-
-Enviro_FA <- Data  %>%
+Sante_FA <- Data  %>%
   dplyr::select(c(health_phy,
                   health_mental,
                   happiness,
-                  life_satisfaction)) %>%
+                  life_satisfaction_norm,
+                  exercice_hike)) %>%
   na.omit()
 
-topdown_fa(Enviro_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis")
+topdown_fa(Sante_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis/sante-bien-etreFA2.png")
 
-#### Consommation locale ####
+
+#### Environnementaliste ####
+
+#### Local-International ####
+
+#### Sophistication cons ####
 
 #### Substance use #### 
 
 #### Vie sociale #### 
+
+
 
 

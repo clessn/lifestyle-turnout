@@ -1,6 +1,35 @@
+# 0.1 - Packages ####
 library(tidyverse)
 
+# 0.2 - Data ####
 Data <- readRDS("_SharedFolder_article-turnout-lifestyles/data/VPL-data-19_01_2019/lifestyle_coding/data/DataBaV_31-05-2020.rds")
+Data$age_cat <- NA
+Data$age_cat[Data$age_under25 == 1] <- 1
+Data$age_cat[Data$age_25to45 == 1] <- 2
+Data$age_cat[Data$age_45to60 == 1] <- 3
+Data$age_cat[Data$age_over60 == 1] <- 4
+
+
+sum_nas <- function(df){
+  #df <- Ses_CA
+  cols <- names(df)
+  ret <- data.frame(cols = cols,
+                    nas = c(rep(0, length(cols))))
+  vec_nas <- c()
+  for (i in 1:length(cols)){
+    col <- names(df)[i]
+    xi <- sum(is.na(df[[col]])) 
+    vec_nas[i] <- xi
+  }
+  ret$nas <- vec_nas
+  ret <- ret %>%
+    arrange(., -nas)
+  print(head(ret, 10))
+  return(ret)
+}
+
+varAge <- "age_cat"
+var <- "drink_wine"
 
 make_graph <- function(Data, varAge, var){
   Freq <- data.frame(table(Data[[varAge]], Data[[var]])) %>%
@@ -8,14 +37,14 @@ make_graph <- function(Data, varAge, var){
   
   Agg <- Data %>%
     group_by(.data[[varAge]], .data[[var]]) %>%
-    summarise(vote2019 = sum(op_turnout2019))
+    summarise(vote2019 = sum(voted))
   
   Agg[[varAge]] <- as.factor(Agg[[varAge]])
   Agg[[var]] <- as.factor(Agg[[var]])
   
   ByAge <- Data %>%
     group_by(.data[[varAge]]) %>%
-    summarise(sum = sum(op_turnout2019),
+    summarise(sum = sum(voted),
               n = n(),
               percAgeCat = sum/n) %>%
     select(c(1, 4))
@@ -26,11 +55,7 @@ make_graph <- function(Data, varAge, var){
     mutate(percVote2019 = vote2019/Freq) %>%
     left_join(., ByAge, by = varAge)
   
-  levelsAge <- if (varAge == "ses_age_cat_v2") {
-    c("18-24", "25-34", "35-54", "55+")
-  } else {
-    c("18-34", "35-54", "55+") 
-  }
+  levelsAge <- c(1, 2, 3, 4) 
   
   levels(GraphData[[varAge]]) <- levelsAge
   
@@ -51,10 +76,10 @@ make_graph <- function(Data, varAge, var){
 }
 
 make_graph(Data,
-           "",
-           "")
+           "age_cat",
+           "drink_wine")
 
-ggsave("_SharedFolder_article-turnout-lifestyles/dataMining_results/test.png")
+ggsave("_SharedFolder_article-turnout-lifestyles/dataMining_results/exploPes/effet_age/test.png")
 
 save_graphs <- function(Data, vars_age, vars,
                         path) {
