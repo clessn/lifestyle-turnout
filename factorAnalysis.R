@@ -103,7 +103,8 @@ finverser <- function(df, col){
 
 # life_satisfaction
 Data$life_satisfaction_norm <- Data$life_satisfaction/10
-Data$exercice_jog_rev <- finverser(Data, "exercice_jog")
+
+Data$exercice_hike_rev <- finverser(Data, "exercice_hike")
 
 #### Santé et bien-être ####
 
@@ -123,8 +124,7 @@ Sante_FA <- Data  %>%
   dplyr::select(c(health_phy,
                   health_mental,
                   happiness,
-                  life_satisfaction_norm,
-                  exercice_hike)) %>%
+                  life_satisfaction_norm)) %>%
   na.omit()
 
 topdown_fa(Sante_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis/sante-bien-etreFA2.png")
