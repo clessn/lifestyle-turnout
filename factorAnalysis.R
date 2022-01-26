@@ -216,7 +216,51 @@ topdown_fa(Enviro_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAna
 
 #### Local-International ####
 
+Data$coffeelocint <- NA
+Data$coffeelocint[Data$coffee_shop_independent == 1] <- 1
+Data$coffeelocint[Data$coffee_shop_timHortons == 1] <- 0.5
+Data$coffeelocint[Data$coffee_shop_mcdo == 1 |Data$coffee_shop_starbucks == 1] <- 0
+
+
+
+Locint_FA <- Data  %>%
+  dplyr::select(c(coffeelocint, 
+                  food_normal_rev, 
+                  transport_car_scale_norm)) %>%
+  na.omit()
+
+topdown_fa(Locint_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis/LocintFA.png")
+
+
+#### Test_Hipster ####
+
+Data$smoker_cannabis_scale_norm <- Data$smoker_cannabis_scale/4 
+Data$smoker_cig_scale_norm <- Data$smoker_cig_scale/4
+
+
+Data$smoker_cig_scale_norm_rev <- finverser(Data, "smoker_cig_scale_norm")
+
+
+Hips_FA <- Data  %>%
+  dplyr::select(c(coffee_shop_independent, 
+                  food_normal_rev, 
+                  transport_public_scale_norm,
+                  smoker_cig_scale_norm_rev
+                  )) %>%
+  na.omit()
+
+topdown_fa(Hips_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnalysis/HypsFA.png")
+
+
+
+
 #### Sophistication cons ####
+Data$smoker_cannabis_scale_norm <- Data$smoker_cannabis_scale/4 
+Data$smoker_cig_scale_norm <- Data$smoker_cig_scale/
+Data$drink_wine_scale_norm <- Data$drink_wine_scale/
+Data$drink_beer_scale_norm <- Data$drink_beer_scale/
+Data$drink_beer_spirit_norm <- Data$drink_spirit_scale/
+
 
 #### Substance use #### 
 
