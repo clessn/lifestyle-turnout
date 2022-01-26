@@ -219,7 +219,6 @@ topdown_fa(Enviro_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAna
 ### Au lieu de faire une dimension enviro, on va faire une dimension transport
 
 
-
 #### Local-International ####
 
 #### Sophistication cons ####
