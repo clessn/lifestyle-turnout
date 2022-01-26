@@ -154,11 +154,6 @@ Data$transport_car_scale_norm <- Data$transport_car_scale/4
 Data$transport_taxi_scale_norm <- Data$transport_taxi_scale/4 
 
 
-
-
-  
-
-
 Enviro_FA <- Data  %>%
   dplyr::select(c(favorite_transport, 
                   regime, 
