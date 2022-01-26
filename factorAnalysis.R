@@ -235,8 +235,8 @@ topdown_fa(Locint_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAna
 
 #### Test_Hipster ####
 
-Data$smoker_cannabis_scale_norm <- Data$smoker_cannabis_scale/4 
-Data$smoker_cig_scale_norm <- Data$smoker_cig_scale/4
+Data$smoker_cannabis_scale_norm <- Data$smoker_cannabis_scale/8
+Data$smoker_cig_scale_norm <- Data$smoker_cig_scale/8
 
 
 Data$smoker_cig_scale_norm_rev <- finverser(Data, "smoker_cig_scale_norm")
@@ -256,11 +256,11 @@ topdown_fa(Hips_FA, "_SharedFolder_article-turnout-lifestyles/graphs/factorAnaly
 
 
 #### Sophistication cons ####
-Data$smoker_cannabis_scale_norm <- Data$smoker_cannabis_scale/4 
-Data$smoker_cig_scale_norm <- Data$smoker_cig_scale/
-Data$drink_wine_scale_norm <- Data$drink_wine_scale/
-Data$drink_beer_scale_norm <- Data$drink_beer_scale/
-Data$drink_beer_spirit_norm <- Data$drink_spirit_scale/
+Data$smoker_cannabis_scale_norm <- Data$smoker_cannabis_scale/8
+Data$smoker_cig_scale_norm <- Data$smoker_cig_scale/8
+Data$drink_wine_scale_norm <- Data$drink_wine_scale/8
+Data$drink_beer_scale_norm <- Data$drink_beer_scale/8
+Data$drink_beer_spirit_norm <- Data$drink_spirit_scale/8
 
 
 #### Substance use #### 
