@@ -1,0 +1,11 @@
+name: shiny-turnout
+title:
+username:
+account: clessn-host
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5759856
+bundleId: 5630680
+url: https://clessn-host.shinyapps.io/shiny-turnout/
+when: 1646174895.23201
+lastSyncTime: 1646174895.23201

@@ -1,0 +1,11 @@
+name: shiny-cath
+title:
+username:
+account: clessn-host
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5766657
+bundleId: 5634366
+url: https://clessn-host.shinyapps.io/shiny-cath/
+when: 1646250859.92344
+lastSyncTime: 1646250859.92344
